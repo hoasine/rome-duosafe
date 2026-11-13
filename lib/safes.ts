@@ -5,6 +5,12 @@ import type { Proposal, ProposalStatus, Safe } from "./types";
 
 export const MAX_OWNERS = 10;
 export const MAX_NAME_BYTES = 64;
+/** Safes seeded by scripts/seed-demo.ts carry this prefix so the UI can label them. */
+export const DEMO_SAFE_PREFIX = "Demo · ";
+
+export function isDemoSafe(name: string) {
+  return name.startsWith(DEMO_SAFE_PREFIX);
+}
 
 export function solanaAddressFromPubkey(pubkey: Hex) {
   return new PublicKey(hexToBytes(pubkey)).toBase58();

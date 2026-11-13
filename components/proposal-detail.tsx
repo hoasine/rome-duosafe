@@ -8,7 +8,7 @@ import { loadApprovals, loadProposal, loadSafe } from "@/lib/contract";
 import { DEMO_OWNER, demoApprovedByOwner, demoProposals, demoSafes } from "@/lib/demo-data";
 import type { Proposal, Safe } from "@/lib/types";
 import { ProposalCard } from "./proposal-card";
-import { OwnerChip } from "./ui";
+import { OwnerChip, SafeName } from "./ui";
 import { useRomeWallet } from "./wallet-provider";
 
 export function ProposalDetail({ proposalId }: { proposalId: bigint }) {
@@ -73,7 +73,7 @@ export function ProposalDetail({ proposalId }: { proposalId: bigint }) {
   return (
     <main className="shell app">
       <Link className="back-link" href={`/safe/${safe.id.toString()}`}>
-        <ArrowLeft size={15} /> {safe.name}
+        <ArrowLeft size={15} /> <SafeName name={safe.name} />
       </Link>
       <div className="app-grid">
         <section className="wallet-panel" aria-label="Proposal">
@@ -82,7 +82,7 @@ export function ProposalDetail({ proposalId }: { proposalId: bigint }) {
               <span className="balance-label">Payment proposal #{proposal.id.toString()}</span>
               <span className="lane-badge evm"><ShieldCheck size={12} /> {safe.threshold} of {safe.owners.length}</span>
             </div>
-            <p className="balance-sub">From safe “{safe.name}”. Share this page with the other co-signers so they can approve.</p>
+            <p className="balance-sub">From safe “<SafeName name={safe.name} />”. Share this page with the other co-signers so they can approve.</p>
           </div>
           <div className="tab-body">
             <ul className="proposal-list">

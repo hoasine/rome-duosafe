@@ -1655,3 +1655,17 @@ code {
     flex-direction: column;
   }
 }
+
+.demo-pill {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: rgba(245, 185, 74, 0.18);
+  color: var(--warning);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}

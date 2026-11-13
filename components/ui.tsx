@@ -20,6 +20,7 @@ import type { Address } from "viem";
 import { VIA_BASE_URL, shortAddress } from "@/lib/config";
 import { publicClient } from "@/lib/contract";
 import { formatUsdc } from "@/lib/money";
+import { DEMO_SAFE_PREFIX, isDemoSafe } from "@/lib/safes";
 import type { SafeOwner } from "@/lib/types";
 import { EvmMark, SolanaMark } from "./brand-icons";
 import { useRomeWallet } from "./wallet-provider";
@@ -300,6 +301,16 @@ export function ApprovalBar({ approvals, threshold }: { approvals: number; thres
         {approvals}/{threshold} approvals
       </small>
     </div>
+  );
+}
+
+export function SafeName({ name }: { name: string }) {
+  if (!isDemoSafe(name)) return <>{name}</>;
+  return (
+    <>
+      {name.slice(DEMO_SAFE_PREFIX.length)}{" "}
+      <span className="demo-pill" title="Seeded with throwaway demo wallets">Demo</span>
+    </>
   );
 }
 

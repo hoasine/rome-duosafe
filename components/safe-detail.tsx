@@ -10,7 +10,7 @@ import { formatDate, parseUsdc, resolveRecipient, textError } from "@/lib/money"
 import { isOwnerOf } from "@/lib/safes";
 import type { Proposal, Safe } from "@/lib/types";
 import { ProposalCard } from "./proposal-card";
-import { OwnerChip, QrCode, UsdcAmount, openWalletMenu } from "./ui";
+import { OwnerChip, QrCode, SafeName, UsdcAmount, openWalletMenu } from "./ui";
 import { useRomeWallet } from "./wallet-provider";
 
 type Tab = "proposals" | "propose" | "deposit";
@@ -89,7 +89,7 @@ export function SafeDetail({ safeId }: { safeId: bigint }) {
         <section className="wallet-panel" aria-label="Safe">
           <div className="balance-header">
             <div className="balance-top">
-              <span className="balance-label">{safe.name}</span>
+              <span className="balance-label"><SafeName name={safe.name} /></span>
               <span className="lane-badge evm">
                 <ShieldCheck size={12} /> {safe.threshold} of {safe.owners.length}
               </span>

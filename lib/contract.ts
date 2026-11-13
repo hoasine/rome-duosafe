@@ -97,6 +97,15 @@ export async function loadSafesOf(owner: Address): Promise<Safe[]> {
   return raw.map(toSafe);
 }
 
+/** The newest safes on the contract, for visitors who have not connected a wallet. */
+export async function loadRecentSafes(limit = 6): Promise<Safe[]> {
+  const address = requireContract();
+  const count = await publicClient.readContract({ address, abi: duoSafeAbi, functionName: "safeCount" });
+  const ids: bigint[] = [];
+  for (let id = count; id > 0n && ids.length < limit; id--) ids.push(id);
+  return Promise.all(ids.map(loadSafe));
+}
+
 export async function loadProposals(safeId: bigint): Promise<Proposal[]> {
   const raw = await publicClient.readContract({
     address: requireContract(),

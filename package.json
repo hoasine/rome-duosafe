@@ -15,6 +15,7 @@
     "deploy:hadrian": "hardhat run scripts/deploy.ts --network hadrian",
     "deploy:secure": "node scripts/deploy-secure.mjs",
     "deploy:rubicon": "node scripts/deploy-secure.mjs scripts/deploy.ts rubicon",
+    "seed:demo": "node scripts/deploy-secure.mjs scripts/seed-demo.ts hadrian",
     "check": "npm run lint && npm run typecheck && npm run test:contracts && npm run build"
   },
   "dependencies": {

@@ -5,13 +5,13 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { DUOSAFE_ADDRESS, VIA_BASE_URL, isPreviewMode, shortAddress } from "@/lib/config";
-import { encodeCreateSafe, findNewSafe, loadSafesOf, loadStats } from "@/lib/contract";
+import { encodeCreateSafe, findNewSafe, loadRecentSafes, loadSafesOf, loadStats } from "@/lib/contract";
 import { DEMO_OWNER, demoProposals, demoSafes } from "@/lib/demo-data";
 import { formatUsdc, resolveRecipient } from "@/lib/money";
 import { MAX_OWNERS, parseOwners, validateSafeName } from "@/lib/safes";
 import type { Safe } from "@/lib/types";
 import { EvmMark, SolanaMark } from "./brand-icons";
-import { UsdcAmount, openWalletMenu, useChainHealth } from "./ui";
+import { SafeName, UsdcAmount, openWalletMenu, useChainHealth } from "./ui";
 import { useRomeWallet } from "./wallet-provider";
 
 export function DuoSafeHome() {
@@ -32,13 +32,7 @@ export function DuoSafeHome() {
     loadStats()
       .then((next) => !cancelled && setStats(next))
       .catch(() => undefined);
-    if (!viewer) {
-      void Promise.resolve().then(() => !cancelled && setSafes([]));
-      return () => {
-        cancelled = true;
-      };
-    }
-    loadSafesOf(viewer)
+    (viewer ? loadSafesOf(viewer) : loadRecentSafes())
       .then((next) => !cancelled && setSafes(next))
       .catch((caught: unknown) => {
         if (cancelled) return;
@@ -81,7 +75,7 @@ export function DuoSafeHome() {
             <p className="balance-sub">
               {viewer
                 ? `Safes where ${shortAddress(viewer)} is a co-signer.`
-                : "Connect a wallet to see the safes you co-sign."}
+                : "Recent safes on Hadrian. Connect a wallet to see the safes you co-sign."}
             </p>
             {!viewer && (
               <button className="button button-primary" onClick={openWalletMenu}>
@@ -102,7 +96,7 @@ export function DuoSafeHome() {
               </ul>
             ) : (
               <div className="empty-state">
-                {viewer ? "You are not a co-signer on any safe yet." : "No wallet connected."}
+                {viewer ? "You are not a co-signer on any safe yet." : "No safes yet. Create the first one."}
               </div>
             )}
           </div>
@@ -148,7 +142,9 @@ function SafeCard({ safe }: { safe: Safe }) {
       <Link className="safe-card" href={`/safe/${safe.id.toString()}`}>
         <span className="safe-card-icon"><ShieldCheck size={18} /></span>
         <span className="safe-card-main">
-          <strong>{safe.name}</strong>
+          <strong>
+            <SafeName name={safe.name} />
+          </strong>
           <small>
             {safe.threshold} of {safe.owners.length} · {safe.owners.length - solana} EVM, {solana} Solana
           </small>

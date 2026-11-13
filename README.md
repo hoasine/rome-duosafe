@@ -75,4 +75,12 @@ NEXT_PUBLIC_DUOSAFE_ADDRESS=0x...
 NEXT_PUBLIC_SOLANA_RPC=https://api.devnet.solana.com
 ```
 
+## Demo data
+
+```bash
+npm run seed:demo
+```
+
+Creates three safes labelled **Demo** on Hadrian with throwaway wallets and generated Solana keys, then deposits, proposes, approves, cancels, and executes so every proposal state is visible. The wallet that runs it co-signs the grants safe, so it can approve and execute the waiting proposals from MetaMask. Progress is saved in `.demo-seed.json` (git-ignored), so the command resumes where it stopped.
+
 See [`docs/ARENA_SUBMISSION.md`](docs/ARENA_SUBMISSION.md) and [`docs/DEMO_SCRIPT.md`](docs/DEMO_SCRIPT.md).
