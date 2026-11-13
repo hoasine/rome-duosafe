@@ -9,7 +9,7 @@ DuoSafe is a shared USDC safe on Rome whose co-signers can be MetaMask addresses
 ## Live deployment
 
 - App: https://rome-duosafe.vercel.app
-- DuoSafe contract: `ADD_CONTRACT_ADDRESS` (Hadrian testnet, chain 200010)
+- DuoSafe contract: `0xf54b190C788fCA8DD587Cdd7A7D1EfDf7D8654f8` on Hadrian testnet, chain 200010 ([explorer](https://via-hadrian.testnet.romeprotocol.xyz/address/0xf54b190C788fCA8DD587Cdd7A7D1EfDf7D8654f8), [verified source](https://verify.testnet.romeprotocol.xyz/repo-ui/200010/0xf54b190C788fCA8DD587Cdd7A7D1EfDf7D8654f8))
 
 ## Why it needs Rome
 

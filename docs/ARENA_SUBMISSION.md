@@ -43,10 +43,10 @@ Rome gives every Solana wallet an EVM address derived from its public key and le
 - Website: `https://rome-duosafe.vercel.app`
 - GitHub: `https://github.com/hoasine/rome-duosafe`
 - X: `https://x.com/HoaTranRom`
-- Contract: `ADD_CONTRACT_ADDRESS`
-- Deployment transaction (for "Link a contract"): `ADD_DEPLOY_TX`
-- Via Explorer: `https://via-hadrian.testnet.romeprotocol.xyz/address/ADD_CONTRACT_ADDRESS`
-- Verified source: `https://verify.testnet.romeprotocol.xyz/repo-ui/200010/ADD_CONTRACT_ADDRESS`
+- Contract: `0xf54b190C788fCA8DD587Cdd7A7D1EfDf7D8654f8`
+- Deployment transaction (for "Link a contract"): `0xc28a90652e6a3378c4c67367144fbccf428bbe99e5b1b0c23a64c1f9377405a7`
+- Via Explorer: `https://via-hadrian.testnet.romeprotocol.xyz/address/0xf54b190C788fCA8DD587Cdd7A7D1EfDf7D8654f8`
+- Verified source: `https://verify.testnet.romeprotocol.xyz/repo-ui/200010/0xf54b190C788fCA8DD587Cdd7A7D1EfDf7D8654f8`
 - Demo video: `ADD_VIDEO_URL`
 
 ## Grant application
