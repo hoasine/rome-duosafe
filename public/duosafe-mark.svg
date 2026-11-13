@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-labelledby="title">
+  <title id="title">DuoSafe</title>
+  <defs>
+    <linearGradient id="bg" x1="6" y1="4" x2="42" y2="44" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2BD4B4"/>
+      <stop offset="1" stop-color="#0E9F86"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="44" height="44" rx="13" fill="url(#bg)"/>
+  <path d="M24 10.5 13.5 14.6v8.3c0 6.6 4.4 11.7 10.5 14.6 6.1-2.9 10.5-8 10.5-14.6v-8.3L24 10.5Z" fill="#fff"/>
+  <path d="M19.2 24h9.6" stroke="#0E9F86" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="18.4" cy="24" r="3.2" fill="#FF8A3D"/>
+  <circle cx="29.6" cy="24" r="3.2" fill="#9B6BFF"/>
+</svg>
