@@ -145,6 +145,8 @@ async function main() {
   }
 
   async function send(wallet: Wallet, data: Hex, value = 0n) {
+    // Hadrian rejects gas estimates whose value exceeds the sender's balance.
+    if (value > 0n) await topUp(wallet.address, value + GAS_BUFFER);
     const gas = await publicClient.estimateGas({ account: wallet.account!, to: duosafe, data, value });
     const gasPrice = await publicClient.getGasPrice();
     await topUp(wallet.address, (gas * gasPrice * 12n) / 10n + value);
