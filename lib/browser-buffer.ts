@@ -17,7 +17,12 @@ function ensureWriter(prototype: object | null) {
   while (prototype && prototype !== Object.prototype) {
     const current = prototype as ByteWriter;
     if (typeof current.writeBigUInt64LE !== "function") {
-      Object.defineProperty(current, "writeBigUInt64LE", { value: writeBigUInt64LE });
+      // Wallet extensions bundle their own Buffer and assign this method too, so it must stay writable.
+      Object.defineProperty(current, "writeBigUInt64LE", {
+        value: writeBigUInt64LE,
+        writable: true,
+        configurable: true,
+      });
     }
     prototype = Object.getPrototypeOf(prototype);
   }
